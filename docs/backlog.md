@@ -12,7 +12,7 @@
 
 | ID | Title | Priority | Status | Target |
 |---|---|---:|---|---|
-| AI-101 | Define MVP product requirements | Must | Review | Day 1 |
+| AI-101 | Define MVP product requirements | Must | Done| Day 1 |
 | AI-102 | Design system architecture | Must | Ready | Day 2 |
 | AI-103 | Define API contract and errors | Must | Backlog | Day 2 |
 | AI-104 | Design database schema | Must | Backlog | Day 2 |
