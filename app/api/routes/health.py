@@ -2,7 +2,6 @@ from fastapi import APIRouter, status
 
 from app.schemas.health import LivenessResponse
 
-
 router = APIRouter(
     prefix="/health",
     tags=["health"],
