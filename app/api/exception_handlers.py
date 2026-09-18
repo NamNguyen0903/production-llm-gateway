@@ -9,7 +9,6 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 from app.core.exceptions import AppError
 from app.schemas.errors import ErrorDetail, ErrorResponse
 
-
 logger = logging.getLogger(__name__)
 
 REQUEST_ID_HEADER = "X-Request-ID"
