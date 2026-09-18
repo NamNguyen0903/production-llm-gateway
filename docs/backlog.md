@@ -13,9 +13,9 @@
 | ID | Title | Priority | Status | Target |
 |---|---|---:|---|---|
 | AI-101 | Define MVP product requirements | Must | Done| Day 1 |
-| AI-102 | Design system architecture | Must | Ready | Day 2 |
-| AI-103 | Define API contract and errors | Must | Backlog | Day 2 |
-| AI-104 | Design database schema | Must | Backlog | Day 2 |
+| AI-102 | Design system architecture | Must | Done | Day 2 |
+| AI-103 | Define API contract and errors | Must | Done | Day 2 |
+| AI-104 | Design database schema | Must | Done | Day 2 |
 | AI-105 | Bootstrap FastAPI project | Must | Backlog | Day 3 |
 | AI-106 | Add PostgreSQL and Alembic | Must | Backlog | Week 1 |
 | AI-107 | Implement API-key authentication | Must | Backlog | Week 1 |
