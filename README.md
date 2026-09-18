@@ -24,7 +24,11 @@ The project is currently in the requirements and system-design phase.
 ## Documentation
 
 - [Product requirements](docs/requirements.md)
+- [System architecture](docs/architecture.md)
+- [API design](docs/api-design.md)
+- [Database design](docs/database-design.md)
 - [Implementation backlog](docs/backlog.md)
+- [Architecture decisions](docs/adr/)
 
 ## MVP constraints
 
