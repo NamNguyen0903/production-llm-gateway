@@ -1,6 +1,8 @@
 from fastapi import APIRouter, status
 
-from app.schemas.health import LivenessResponse
+from app.core.exceptions import AppError
+from app.db.session import check_database_connection
+from app.schemas.health import LivenessResponse, ReadinessResponse
 
 router = APIRouter(
     prefix="/health",
@@ -12,9 +14,25 @@ router = APIRouter(
     "/live",
     response_model=LivenessResponse,
     status_code=status.HTTP_200_OK,
-    summary="Check whether the API process is alive",
 )
-async def get_liveness() -> LivenessResponse:
-    """Return successfully when the API process is running."""
+async def liveness() -> LivenessResponse:
+    return LivenessResponse(status="alive")
 
-    return LivenessResponse()
+
+@router.get(
+    "/ready",
+    response_model=ReadinessResponse,
+    status_code=status.HTTP_200_OK,
+)
+async def readiness() -> ReadinessResponse:
+    try:
+        await check_database_connection()
+    except Exception as exc:
+        raise AppError(
+            code="DATABASE_UNAVAILABLE",
+            message="Database is unavailable.",
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            retryable=True,
+        ) from exc
+
+    return ReadinessResponse(status="ready")
