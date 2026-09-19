@@ -73,6 +73,7 @@ async def handle_app_error(
         message=exc.message,
         retryable=exc.retryable,
         details=exc.details,
+        headers=exc.headers,
     )
 
 
