@@ -1,18 +1,11 @@
-import os
-
 import pytest
+from sqlalchemy import text
+from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.db.session import check_database_connection
-
-pytestmark = [
-    pytest.mark.integration,
-    pytest.mark.skipif(
-        os.getenv("RUN_INTEGRATION_TESTS") != "1",
-        reason="Set RUN_INTEGRATION_TESTS=1 to run database tests.",
-    ),
-]
+pytestmark = [pytest.mark.integration, pytest.mark.asyncio]
 
 
-@pytest.mark.asyncio
-async def test_database_connection() -> None:
-    await check_database_connection()
+async def test_database_connection(db_session: AsyncSession) -> None:
+    result = await db_session.scalar(text("SELECT 1"))
+
+    assert result == 1
