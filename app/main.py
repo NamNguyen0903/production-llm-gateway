@@ -5,6 +5,7 @@ from fastapi import FastAPI
 
 from app.api.exception_handlers import register_exception_handlers
 from app.api.middleware.request_id import RequestIDMiddleware
+from app.api.routes.auth import router as auth_router
 from app.api.routes.health import router as health_router
 from app.core.config import Settings, get_settings
 from app.db.session import close_database_connection
@@ -20,6 +21,7 @@ async def lifespan(_: FastAPI) -> AsyncIterator[None]:
 
 def create_app(settings: Settings | None = None) -> FastAPI:
     """Create and configure the FastAPI application."""
+
     app_settings = settings or get_settings()
 
     application = FastAPI(
@@ -40,7 +42,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     )
 
     register_exception_handlers(application)
+
     application.include_router(health_router)
+    application.include_router(auth_router)
 
     return application
 
